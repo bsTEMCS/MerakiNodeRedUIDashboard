@@ -32,7 +32,7 @@ Before using this flow, ensure you have:
 
 **Required Node-RED Palettes**
 
-Install the following Node-RED palettes before importing this flow:
+Install the following Node-RED palettes before importing this flow using the Manage Palette option in Node-RED’s menu.:
 
 [node-red-dashboard
 ](https://flows.nodered.org/node/node-red-dashboard)
@@ -40,16 +40,6 @@ For UI elements (charts, tables, dropdowns, gauges).
 
 [node-red-node-ui-table
 ](https://flows.nodered.org/node/node-red-node-ui-table) (optional, if you want advanced tables)
-
-To install, run:
-
-bash
-
-cd ~/.node-red
-
-npm install node-red-dashboard
-
-**Or use the Manage Palette option in Node-RED’s menu.**
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
