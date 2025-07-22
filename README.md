@@ -4,14 +4,14 @@ Cisco Meraki Node-RED Dashboard: Guide
 
 **Overview**
 
-This Node-RED flow provides a dashboard for monitoring Cisco Meraki organizations, networks, devices, and clients. It allows users to:
+This Node-RED flow provides a example dashboard for monitoring Cisco Meraki organizations, networks, devices, and clients. It allows users to:
 
-- Select and view organizations and networks from their Meraki environment.
-- Monitor Meraki device statuses, including detailed views for MX devices.
-- Display network device statuses and wireless latency in real-time using tables and gauges.
-- Visualize wireless connection summaries with bar charts.
-- List connected network clients with statuses and MAC addresses.
-- Interact with the dashboard to refresh data and select particular devices/networks.
+- **Select and view organizations** and networks from their Meraki environment.
+- **Monitor Meraki device statuses**, including detailed views for MX devices.
+- **Display network device statuses** and wireless latency in real-time using tables and gauges.
+- **Visualize wireless connection summaries** with bar charts.
+- **List connected network clients** with statuses and MAC addresses.
+- **Interact with the dashboard** to refresh data and select particular devices/networks.
 
 The flow integrates with the Cisco Meraki Dashboard API to fetch organization, network, device, and client data, presenting it with rich UI elements (dropdowns, tables, charts) suitable for network monitoring and troubleshooting.
 
