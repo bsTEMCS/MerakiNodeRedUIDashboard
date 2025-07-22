@@ -68,7 +68,6 @@ Click the Deploy button (top right) to activate the flow.
 
 Locate any http request nodes (labelled "Auth Token Header") in the flow.
 Open each node and set the Authentication to Bearer and paste your Meraki API key, or edit the headers to include:
-Copy Code
 X-Cisco-Meraki-API-Key: YOUR_API_KEY
 Alternatively, set a global/flow environment variable if you use the same key in multiple places.
 
