@@ -44,7 +44,9 @@ For UI elements (charts, tables, dropdowns, gauges).
 To install, run:
 
 bash
+
 cd ~/.node-red
+
 npm install node-red-dashboard
 
 Or use the Manage Palette option in Node-RED’s menu.
