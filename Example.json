@@ -1,0 +1,1674 @@
+[
+    {
+        "id": "e46559f9beca2074",
+        "type": "tab",
+        "label": "Meraki Node Dashboard",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "88b6967114f4a47c",
+        "type": "inject",
+        "z": "e46559f9beca2074",
+        "name": "Organizations",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.5",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 140,
+        "wires": [
+            [
+                "93dd6f8f6ab60aef"
+            ]
+        ]
+    },
+    {
+        "id": "2cb2d3491bf88821",
+        "type": "function",
+        "z": "e46559f9beca2074",
+        "name": "set options",
+        "func": "var options = [];\n\nmsg.payload.forEach(n => {\n    var obj = {};\n    obj[n.name] = n.id;\n    options.push(obj)\n})\n\nmsg.payload = msg.payload[0].id;\nmsg.options = options;\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1110,
+        "y": 280,
+        "wires": [
+            [
+                "2d273eb0026f7d86"
+            ]
+        ]
+    },
+    {
+        "id": "2d273eb0026f7d86",
+        "type": "ui_dropdown",
+        "z": "e46559f9beca2074",
+        "name": "Networks",
+        "label": "Network",
+        "tooltip": "Networks",
+        "place": "Select option",
+        "group": "e7cdca35.a59d78",
+        "order": 2,
+        "width": 8,
+        "height": 2,
+        "passthru": true,
+        "options": [
+            {
+                "label": "",
+                "value": "",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "",
+        "x": 1300,
+        "y": 280,
+        "wires": [
+            [
+                "5541edfcf65d5bd9"
+            ]
+        ]
+    },
+    {
+        "id": "0c389de38b7e0a9a",
+        "type": "inject",
+        "z": "e46559f9beca2074",
+        "name": "Networks",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "0.5",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 149.9857940673828,
+        "y": 297,
+        "wires": [
+            [
+                "888ed7ba18dc5dfe"
+            ]
+        ]
+    },
+    {
+        "id": "888ed7ba18dc5dfe",
+        "type": "change",
+        "z": "e46559f9beca2074",
+        "name": "Set URL Params",
+        "rules": [
+            {
+                "t": "set",
+                "p": "organizationId",
+                "pt": "msg",
+                "to": "organizationId",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 370,
+        "y": 280,
+        "wires": [
+            [
+                "406194f47fb7685b"
+            ]
+        ]
+    },
+    {
+        "id": "0956d7e7fd8775de",
+        "type": "link out",
+        "z": "e46559f9beca2074",
+        "name": "Select Organization ID",
+        "mode": "link",
+        "links": [
+            "e3cf7a9276149ab3",
+            "f1926e290fcec1a7",
+            "bcaa4272cee379dc"
+        ],
+        "x": 1575,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "f1926e290fcec1a7",
+        "type": "link in",
+        "z": "e46559f9beca2074",
+        "name": "",
+        "links": [
+            "0956d7e7fd8775de"
+        ],
+        "x": 104.98579406738281,
+        "y": 257,
+        "wires": [
+            [
+                "888ed7ba18dc5dfe"
+            ]
+        ]
+    },
+    {
+        "id": "e1f9e2f3e5e5bd41",
+        "type": "function",
+        "z": "e46559f9beca2074",
+        "name": "set options",
+        "func": "var options = [];\n\nmsg.payload.forEach(d => {\n    var obj = {};\n    obj[d.name] = d.id;\n    options.push(obj)\n})\n\nmsg.payload = msg.payload[0].id;\nmsg.options = options;\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 140,
+        "wires": [
+            [
+                "448377dc5032d85a"
+            ]
+        ]
+    },
+    {
+        "id": "448377dc5032d85a",
+        "type": "ui_dropdown",
+        "z": "e46559f9beca2074",
+        "name": "Organizations",
+        "label": "Organization",
+        "tooltip": "Organizations",
+        "place": "Select option",
+        "group": "e7cdca35.a59d78",
+        "order": 1,
+        "width": 8,
+        "height": 2,
+        "passthru": true,
+        "options": [
+            {
+                "label": "",
+                "value": "",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "",
+        "x": 1080,
+        "y": 140,
+        "wires": [
+            [
+                "d5fe2694feb6734e"
+            ]
+        ]
+    },
+    {
+        "id": "d5fe2694feb6734e",
+        "type": "change",
+        "z": "e46559f9beca2074",
+        "name": "set flow.organizationId",
+        "rules": [
+            {
+                "t": "set",
+                "p": "organizationId",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1420,
+        "y": 140,
+        "wires": [
+            [
+                "0956d7e7fd8775de"
+            ]
+        ]
+    },
+    {
+        "id": "5541edfcf65d5bd9",
+        "type": "change",
+        "z": "e46559f9beca2074",
+        "name": "set flow.networkId",
+        "rules": [
+            {
+                "t": "set",
+                "p": "networkId",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1490,
+        "y": 280,
+        "wires": [
+            [
+                "ddf26a6b615370f1"
+            ]
+        ]
+    },
+    {
+        "id": "ddf26a6b615370f1",
+        "type": "link out",
+        "z": "e46559f9beca2074",
+        "name": "Select Network ID",
+        "links": [
+            "bcaa4272cee379dc",
+            "02a96fa7ab2fc7f4",
+            "c8333b5e167b2fe4",
+            "e3cf7a9276149ab3",
+            "9b15401760fba5a8"
+        ],
+        "x": 1655,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "53cdf4e97efda220",
+        "type": "comment",
+        "z": "e46559f9beca2074",
+        "name": "Organization Selector",
+        "info": "",
+        "x": 129.9857940673828,
+        "y": 97,
+        "wires": []
+    },
+    {
+        "id": "8c19158ecc6d8e31",
+        "type": "comment",
+        "z": "e46559f9beca2074",
+        "name": "Network Selector",
+        "info": "",
+        "x": 109.98579406738281,
+        "y": 217,
+        "wires": []
+    },
+    {
+        "id": "89f0ca1918d8cac6",
+        "type": "comment",
+        "z": "e46559f9beca2074",
+        "name": "Environment Scope Selectors",
+        "info": "",
+        "x": 140,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "a253948496b43152",
+        "type": "function",
+        "z": "e46559f9beca2074",
+        "name": "Set Devices MAC Map",
+        "func": "var devices = {};\n\nmsg.payload.forEach(d =>\n{\n    devices[d.mac] = d;\n})\n\nflow.set('devicesByMac', devices)\nmsg.payload = devices;\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1060,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "64d9b24ae0f06322",
+        "type": "inject",
+        "z": "e46559f9beca2074",
+        "name": "Devices",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "0.5",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 146.65245056152344,
+        "y": 440.3333320617676,
+        "wires": [
+            [
+                "bba476f11ce68d56"
+            ]
+        ]
+    },
+    {
+        "id": "3a70782cc1d01e65",
+        "type": "debug",
+        "z": "e46559f9beca2074",
+        "name": "Devices",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1360,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "4a4eb449eb0f561e",
+        "type": "ui_dropdown",
+        "z": "e46559f9beca2074",
+        "name": "",
+        "label": "MX Devices",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "ad8073f6.ffc03",
+        "order": 1,
+        "width": 6,
+        "height": 1,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "",
+                "value": "",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "",
+        "topicType": "str",
+        "className": "",
+        "x": 650,
+        "y": 580,
+        "wires": [
+            [
+                "ea31662a0c65cd37"
+            ]
+        ]
+    },
+    {
+        "id": "126580571e4eb3b3",
+        "type": "function",
+        "z": "e46559f9beca2074",
+        "name": "set options",
+        "func": "var options = [];\n\nif(msg.payload.length > 0){\n    msg.payload.forEach(d => {\n        var obj = {};\n        obj[d.name || d.serial] = d.serial;\n        options.push(obj)\n    })\n\n    msg.payload = msg.payload[0].serial;\n}\n\nmsg.options = options;\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 580,
+        "wires": [
+            [
+                "4a4eb449eb0f561e"
+            ]
+        ]
+    },
+    {
+        "id": "e9fefda197b6f305",
+        "type": "function",
+        "z": "e46559f9beca2074",
+        "name": "filter for MX",
+        "func": "msg.payload = msg.payload.filter(d => d.productType.includes(\"appliance\"))\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 230,
+        "y": 580,
+        "wires": [
+            [
+                "126580571e4eb3b3"
+            ]
+        ]
+    },
+    {
+        "id": "cd7bacd17de13ed5",
+        "type": "link out",
+        "z": "e46559f9beca2074",
+        "name": "getNetworkDevices",
+        "links": [
+            "23b305269ef5ec2c",
+            "37fc84527038695a",
+            "ff626826d009526d",
+            "02a96fa7ab2fc7f4",
+            "9b15401760fba5a8"
+        ],
+        "x": 775,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "23b305269ef5ec2c",
+        "type": "link in",
+        "z": "e46559f9beca2074",
+        "name": "select MX device",
+        "links": [
+            "cd7bacd17de13ed5"
+        ],
+        "x": 115,
+        "y": 580,
+        "wires": [
+            [
+                "e9fefda197b6f305"
+            ]
+        ]
+    },
+    {
+        "id": "37fc84527038695a",
+        "type": "link in",
+        "z": "e46559f9beca2074",
+        "name": "",
+        "links": [
+            "cd7bacd17de13ed5"
+        ],
+        "x": 895,
+        "y": 480,
+        "wires": [
+            [
+                "a253948496b43152"
+            ]
+        ]
+    },
+    {
+        "id": "438145710aa22f51",
+        "type": "link out",
+        "z": "e46559f9beca2074",
+        "name": "selected MX device",
+        "links": [],
+        "x": 1455,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "bba476f11ce68d56",
+        "type": "change",
+        "z": "e46559f9beca2074",
+        "name": "Set URL Params",
+        "rules": [
+            {
+                "t": "set",
+                "p": "networkId",
+                "pt": "msg",
+                "to": "networkId",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "organizationId",
+                "pt": "msg",
+                "to": "organizationId",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 386.65245056152344,
+        "y": 420.3333320617676,
+        "wires": [
+            [
+                "a37eb5685e8c4766"
+            ]
+        ]
+    },
+    {
+        "id": "6efaad1692da930c",
+        "type": "function",
+        "z": "e46559f9beca2074",
+        "name": "Set Devices Serial Map",
+        "func": "var devices = {};\n\nmsg.payload.forEach(d =>\n{\n    devices[d.serial] = d;\n})\n\nflow.set('devicesBySerial', devices)\nmsg.payload = devices;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1070,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ff626826d009526d",
+        "type": "link in",
+        "z": "e46559f9beca2074",
+        "name": "",
+        "links": [
+            "cd7bacd17de13ed5"
+        ],
+        "x": 895,
+        "y": 520,
+        "wires": [
+            [
+                "6efaad1692da930c"
+            ]
+        ]
+    },
+    {
+        "id": "ea31662a0c65cd37",
+        "type": "function",
+        "z": "e46559f9beca2074",
+        "name": "find networkId of serial",
+        "func": "var devices = flow.get('devicesBySerial');\nvar serial = msg.payload;\nmsg.serial = serial;\nif(serial.length > 0){\n   var device = devices[serial];\n   msg.networkId = device.networkId;\n   msg.device = device;\n   msg.payload = device;\n}else{\n    msg.payload = \"\";\n}\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 940,
+        "y": 580,
+        "wires": [
+            [
+                "0d3f2bc6adf34ec2"
+            ]
+        ]
+    },
+    {
+        "id": "f6276f9343a30216",
+        "type": "comment",
+        "z": "e46559f9beca2074",
+        "name": "Fetch Devices for selected network",
+        "info": "",
+        "x": 169.9857940673828,
+        "y": 357,
+        "wires": []
+    },
+    {
+        "id": "c82de9bbc600f03a",
+        "type": "comment",
+        "z": "e46559f9beca2074",
+        "name": "MX Device Selector",
+        "info": "",
+        "x": 130,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "bcaa4272cee379dc",
+        "type": "link in",
+        "z": "e46559f9beca2074",
+        "name": "",
+        "links": [
+            "ddf26a6b615370f1",
+            "0956d7e7fd8775de"
+        ],
+        "x": 111.65245056152344,
+        "y": 400.3333320617676,
+        "wires": [
+            [
+                "bba476f11ce68d56"
+            ]
+        ]
+    },
+    {
+        "id": "0d3f2bc6adf34ec2",
+        "type": "change",
+        "z": "e46559f9beca2074",
+        "name": "set flow.selectedMx",
+        "rules": [
+            {
+                "t": "set",
+                "p": "selectedMx",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1280,
+        "y": 580,
+        "wires": [
+            [
+                "438145710aa22f51"
+            ]
+        ]
+    },
+    {
+        "id": "e0a7e662768aa27e",
+        "type": "inject",
+        "z": "e46559f9beca2074",
+        "name": "Network Device Statuses",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "0.5",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 800,
+        "wires": [
+            [
+                "a27c3928da2de5e6"
+            ]
+        ]
+    },
+    {
+        "id": "a27c3928da2de5e6",
+        "type": "trigger",
+        "z": "e46559f9beca2074",
+        "name": "",
+        "op1": "1",
+        "op2": "0",
+        "op1type": "str",
+        "op2type": "str",
+        "duration": "-1",
+        "extend": false,
+        "units": "min",
+        "reset": "",
+        "bytopic": "all",
+        "outputs": 1,
+        "x": 470,
+        "y": 760,
+        "wires": [
+            [
+                "29bfc202cffdd8a2"
+            ]
+        ]
+    },
+    {
+        "id": "e3cf7a9276149ab3",
+        "type": "link in",
+        "z": "e46559f9beca2074",
+        "name": "",
+        "links": [
+            "0956d7e7fd8775de",
+            "ddf26a6b615370f1"
+        ],
+        "x": 95,
+        "y": 760,
+        "wires": [
+            [
+                "a27c3928da2de5e6"
+            ]
+        ]
+    },
+    {
+        "id": "29bfc202cffdd8a2",
+        "type": "change",
+        "z": "e46559f9beca2074",
+        "name": "Set URL Params",
+        "rules": [
+            {
+                "t": "set",
+                "p": "organizationId",
+                "pt": "msg",
+                "to": "organizationId",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "networkId",
+                "pt": "msg",
+                "to": "networkId",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 690,
+        "y": 760,
+        "wires": [
+            [
+                "b7e333e5e337f7b0"
+            ]
+        ]
+    },
+    {
+        "id": "543e236501a73345",
+        "type": "template",
+        "z": "e46559f9beca2074",
+        "name": "css",
+        "field": "style",
+        "fieldType": "msg",
+        "format": "css",
+        "syntax": "mustache",
+        "template": "table {\n    background-color: #FFFFFF;\n    \n    font-family: Helvetica, Arial, sans-serif;\n    width: 100%;\n    border-collapse: collapse;\n    border-spacing: 0;\n}\ntd, th {\n    border: 1px solid transparent;\n    /* No more visible border */\n    height: 30px;\n    transition: all 0.3s;\n    /* Simple transition for hover effect */\n}\nth {\n    background: #FFFFFF;\n    /* Darken header a bit */\n    font-weight: bold;\n}\ntd {\n    background: #FFFFFF;\n    text-align: center;\n}\n\n/* Cells in even rows (2,4,6...) are one color */\n\ntr:nth-child(even) td {\n    background: #000000;\n}\n\n/* Cells in odd rows (1,3,5...) are another (excludes header cells)  */\n\ntr:nth-child(odd) td {\n    background: #333333;\n}\ntr td:hover {\n    background: #666;\n    color: #FFF;\n}\n\n/* Hover cell effect! */",
+        "x": 1310,
+        "y": 780,
+        "wires": [
+            [
+                "fdc92907f5744f7a"
+            ]
+        ]
+    },
+    {
+        "id": "fdc92907f5744f7a",
+        "type": "ui_template",
+        "z": "e46559f9beca2074",
+        "group": "b5eade29.6c84b",
+        "name": "Org Device Statuses",
+        "order": 1,
+        "width": 12,
+        "height": 12,
+        "format": "<style>\n    {{msg.style}}\n</style>\n\n<table>\n  <tr ng-repeat=\"obj in msg.payload\">\n    <td ng-style=\"{'color': 'white'}\">\n      {{ obj.name }}</td>\n    <!-- <td>{{ obj.serial }}</td> -->\n    <td>{{ obj.lanIp }}</td>\n    <td ng-style=\"obj.status ==='online' ? {'color':'green'} : obj.status ==='alerting' ? {'color':'orange'} : {'color': 'red'}\">\n        {{ obj.status }}\n    </td>\n  </tr>\n</table>\n\n\n",
+        "storeOutMessages": false,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 1500,
+        "y": 780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1f7a5da65d667d15",
+        "type": "comment",
+        "z": "e46559f9beca2074",
+        "name": "Network Device Statuses Table",
+        "info": "",
+        "x": 190,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "cc675c5c82873201",
+        "type": "inject",
+        "z": "e46559f9beca2074",
+        "name": "Wireless Net Latency",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 940,
+        "wires": [
+            [
+                "6a0b73419fab61de"
+            ]
+        ]
+    },
+    {
+        "id": "6a0b73419fab61de",
+        "type": "trigger",
+        "z": "e46559f9beca2074",
+        "name": "",
+        "op1": "1",
+        "op2": "0",
+        "op1type": "str",
+        "op2type": "str",
+        "duration": "-5",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "min",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 470,
+        "y": 900,
+        "wires": [
+            [
+                "ef1c82797ea77fed"
+            ]
+        ]
+    },
+    {
+        "id": "02a96fa7ab2fc7f4",
+        "type": "link in",
+        "z": "e46559f9beca2074",
+        "name": "",
+        "links": [
+            "ddf26a6b615370f1",
+            "cd7bacd17de13ed5"
+        ],
+        "x": 95,
+        "y": 900,
+        "wires": [
+            [
+                "6a0b73419fab61de"
+            ]
+        ]
+    },
+    {
+        "id": "ef1c82797ea77fed",
+        "type": "change",
+        "z": "e46559f9beca2074",
+        "name": "Set URL Params",
+        "rules": [
+            {
+                "t": "set",
+                "p": "networkId",
+                "pt": "msg",
+                "to": "networkId",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 710,
+        "y": 900,
+        "wires": [
+            [
+                "53d09a9b839eec9d"
+            ]
+        ]
+    },
+    {
+        "id": "61c637113b56ab48",
+        "type": "ui_gauge",
+        "z": "e46559f9beca2074",
+        "name": "",
+        "group": "5cb3682.7730398",
+        "order": 8,
+        "width": "4",
+        "height": "4",
+        "gtype": "gage",
+        "title": "Avg Network Latency",
+        "label": "ms",
+        "format": "{{msg.payload}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "25",
+        "seg2": "50",
+        "diff": false,
+        "className": "",
+        "x": 1560,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "d6be0bb06e88c1cb",
+        "type": "comment",
+        "z": "e46559f9beca2074",
+        "name": "Wireless Latency Gauge",
+        "info": "",
+        "x": 170,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "ec48d26a3b9cd81a",
+        "type": "comment",
+        "z": "e46559f9beca2074",
+        "name": "Charts and Tables",
+        "info": "****",
+        "x": 130,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "ffa7463493927131",
+        "type": "inject",
+        "z": "e46559f9beca2074",
+        "name": "NetworkClients",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "0.3",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 1280,
+        "wires": [
+            [
+                "61e34be7cc520011"
+            ]
+        ]
+    },
+    {
+        "id": "c301b63468b21eb8",
+        "type": "change",
+        "z": "e46559f9beca2074",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "options",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1100,
+        "y": 1260,
+        "wires": [
+            [
+                "427c27ed21ce5aa2"
+            ]
+        ]
+    },
+    {
+        "id": "11ec00c652918f2e",
+        "type": "ui_button",
+        "z": "e46559f9beca2074",
+        "name": "Refresh Clients",
+        "group": "5111d90b.1f96a8",
+        "order": 1,
+        "width": 1,
+        "height": 1,
+        "passthru": false,
+        "label": "",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "refresh",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 160,
+        "y": 1340,
+        "wires": [
+            [
+                "61e34be7cc520011"
+            ]
+        ]
+    },
+    {
+        "id": "61e34be7cc520011",
+        "type": "change",
+        "z": "e46559f9beca2074",
+        "name": "Set URL Params",
+        "rules": [
+            {
+                "t": "set",
+                "p": "networkId",
+                "pt": "msg",
+                "to": "networkId",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 1260,
+        "wires": [
+            [
+                "478efea20d1135ee"
+            ]
+        ]
+    },
+    {
+        "id": "fb13c1cf52746dff",
+        "type": "comment",
+        "z": "e46559f9beca2074",
+        "name": "Network Clients Table",
+        "info": "",
+        "x": 160,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "427c27ed21ce5aa2",
+        "type": "template",
+        "z": "e46559f9beca2074",
+        "name": "css",
+        "field": "style",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "table {\n    background-color: #7f7f7f;\n    \n    font-family: Helvetica, Arial, sans-serif;\n    width: 100%;\n    border-collapse: collapse;\n    border-spacing: 0;\n}\ntd, th {\n    border: 1px solid transparent;\n    /* No more visible border */\n    height: 30px;\n    transition: all 0.3s;\n    /* Simple transition for hover effect */\n}\nth {\n    background: #7f7f7f;\n    /* Darken header a bit */\n    font-weight: bold;\n}\ntd {\n    background: #dbdbdb;\n    text-align: center;\n}\n\n/* Cells in even rows (2,4,6...) are one color */\n\ntr:nth-child(even) td {\n    background: #555555;\n}\n\n/* Cells in odd rows (1,3,5...) are another (excludes header cells)  */\n\ntr:nth-child(odd) td {\n    background: #333333;\n}\ntr td:hover {\n    background: #666;\n    color: #FFF;\n}\n\n/* Hover cell effect! */",
+        "x": 1370,
+        "y": 1260,
+        "wires": [
+            [
+                "47ce1dca3658d663"
+            ]
+        ]
+    },
+    {
+        "id": "47ce1dca3658d663",
+        "type": "ui_template",
+        "z": "e46559f9beca2074",
+        "group": "5111d90b.1f96a8",
+        "name": "Network Clients",
+        "order": 2,
+        "width": 11,
+        "height": 7,
+        "format": "<style>\n    {{msg.style}}\n</style>\n\n<table>\n  <tr ng-repeat=\"obj in msg.payload\">\n    <td ng-style=\"{'color': 'white'}\">{{ obj.description }}</td>\n    <!-- <td>{{ obj.serial }}</td> -->\n    <td ng-style=\"{'color': 'white'}\">{{ obj.mac }}</td>\n    <td ng-style=\"obj.status ==='Online' ? {'color':'green'} : {'color': 'red'}\">\n        {{ obj.status }}\n    </td>\n  </tr>\n</table>\n\n\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 1560,
+        "y": 1260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c8333b5e167b2fe4",
+        "type": "link in",
+        "z": "e46559f9beca2074",
+        "name": "Network Clients Table",
+        "links": [
+            "ddf26a6b615370f1"
+        ],
+        "x": 95,
+        "y": 1240,
+        "wires": [
+            [
+                "61e34be7cc520011"
+            ]
+        ]
+    },
+    {
+        "id": "f5fdcf305aba0f45",
+        "type": "http request",
+        "z": "e46559f9beca2074",
+        "name": "Auth Token Header",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "bearer",
+        "senderr": false,
+        "headers": [],
+        "x": 1130,
+        "y": 760,
+        "wires": [
+            [
+                "543e236501a73345"
+            ]
+        ]
+    },
+    {
+        "id": "b7e333e5e337f7b0",
+        "type": "function",
+        "z": "e46559f9beca2074",
+        "name": "Create Unique URL",
+        "func": "var baseUrl = \"https://api.meraki.com/api/v1/organizations/\";\nvar orgId = msg.organizationId;  // Ensure this is set earlier in the flow\n// Ensure networkId is an array\nvar networkId = msg.networkId;\n// Construct the URL\nmsg.url = baseUrl + orgId + \"/devices/availabilities?networkIds[]=\" + networkId;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 910,
+        "y": 760,
+        "wires": [
+            [
+                "f5fdcf305aba0f45"
+            ]
+        ]
+    },
+    {
+        "id": "53d09a9b839eec9d",
+        "type": "function",
+        "z": "e46559f9beca2074",
+        "name": "Create Unique URL",
+        "func": "var baseUrl = \"https://api.meraki.com/api/v1/networks/\";\n// Ensure networkId is an array\nvar networkId = msg.networkId;\n// Construct the URL\nmsg.url = baseUrl + networkId + \"/wireless/latencyHistory?timespan=300&resolution=300\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 900,
+        "wires": [
+            [
+                "9e66ceee948241f1"
+            ]
+        ]
+    },
+    {
+        "id": "9e66ceee948241f1",
+        "type": "http request",
+        "z": "e46559f9beca2074",
+        "name": "Auth Token Header",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "bearer",
+        "senderr": false,
+        "headers": [],
+        "x": 1110,
+        "y": 900,
+        "wires": [
+            [
+                "221f6a58f24b1da4"
+            ]
+        ]
+    },
+    {
+        "id": "221f6a58f24b1da4",
+        "type": "function",
+        "z": "e46559f9beca2074",
+        "name": "Parse MS Value ",
+        "func": "msg.payload = msg.payload[0].avgLatencyMs ;  // Extract temperature value\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1340,
+        "y": 900,
+        "wires": [
+            [
+                "61c637113b56ab48"
+            ]
+        ]
+    },
+    {
+        "id": "4036f7e24feddf5b",
+        "type": "inject",
+        "z": "e46559f9beca2074",
+        "name": "Wireless Connection Summary",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 210,
+        "y": 1100,
+        "wires": [
+            [
+                "cd3450fc8a9a6afb"
+            ]
+        ]
+    },
+    {
+        "id": "cd3450fc8a9a6afb",
+        "type": "trigger",
+        "z": "e46559f9beca2074",
+        "name": "",
+        "op1": "1",
+        "op2": "0",
+        "op1type": "str",
+        "op2type": "str",
+        "duration": "-10",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "min",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 470,
+        "y": 1060,
+        "wires": [
+            [
+                "7df68b6522844806"
+            ]
+        ]
+    },
+    {
+        "id": "9b15401760fba5a8",
+        "type": "link in",
+        "z": "e46559f9beca2074",
+        "name": "",
+        "links": [
+            "ddf26a6b615370f1",
+            "cd7bacd17de13ed5"
+        ],
+        "x": 95,
+        "y": 1060,
+        "wires": [
+            [
+                "cd3450fc8a9a6afb"
+            ]
+        ]
+    },
+    {
+        "id": "7df68b6522844806",
+        "type": "change",
+        "z": "e46559f9beca2074",
+        "name": "Set URL Params",
+        "rules": [
+            {
+                "t": "set",
+                "p": "networkId",
+                "pt": "msg",
+                "to": "networkId",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 710,
+        "y": 1060,
+        "wires": [
+            [
+                "5c0e2bf5ea52205e"
+            ]
+        ]
+    },
+    {
+        "id": "0c011e88f2ea5a8d",
+        "type": "comment",
+        "z": "e46559f9beca2074",
+        "name": "Wireless Connection Summary",
+        "info": "",
+        "x": 190,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "5c0e2bf5ea52205e",
+        "type": "function",
+        "z": "e46559f9beca2074",
+        "name": "Create Unique URL",
+        "func": "var baseUrl = \"https://api.meraki.com/api/v1/networks/\";\n// Ensure networkId is an array\nvar networkId = msg.networkId;\n// Construct the URL\nmsg.url = baseUrl + networkId + \"/wireless/connectionStats?timespan=86400\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 1060,
+        "wires": [
+            [
+                "a6703fba37593d63"
+            ]
+        ]
+    },
+    {
+        "id": "a6703fba37593d63",
+        "type": "http request",
+        "z": "e46559f9beca2074",
+        "name": "Auth Token Header",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "bearer",
+        "senderr": false,
+        "headers": [],
+        "x": 1110,
+        "y": 1060,
+        "wires": [
+            [
+                "6b345346ac30b569"
+            ]
+        ]
+    },
+    {
+        "id": "eb44cd445008e273",
+        "type": "ui_chart",
+        "z": "e46559f9beca2074",
+        "name": "",
+        "group": "2ebca0e0df902d3b",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "Wireless Connection Summary ",
+        "chartType": "bar",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#a0702c",
+            "#25e000",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1670,
+        "y": 1060,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6b345346ac30b569",
+        "type": "function",
+        "z": "e46559f9beca2074",
+        "name": "Fill Bar Chart Array",
+        "func": "var bar={};\nbar.labels = [];\nbar.series = [\"Assoc\", \"Auth\", \"DHCP\", \"DNS\", \"Success\"];\n// An array of 4 arrays of 7 elements\nbar.data = [\n    [msg.payload.assoc],\n    [msg.payload.auth],\n    [msg.payload.dhcp],\n    [msg.payload.dns],\n    [msg.payload.success],\n  ];\nreturn {payload:[bar]};",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1410,
+        "y": 1060,
+        "wires": [
+            [
+                "eb44cd445008e273"
+            ]
+        ]
+    },
+    {
+        "id": "5dda4fe7e6533dd4",
+        "type": "http request",
+        "z": "e46559f9beca2074",
+        "name": "Auth Token Header",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "bearer",
+        "senderr": false,
+        "headers": [],
+        "x": 610,
+        "y": 140,
+        "wires": [
+            [
+                "e1f9e2f3e5e5bd41"
+            ]
+        ]
+    },
+    {
+        "id": "93dd6f8f6ab60aef",
+        "type": "function",
+        "z": "e46559f9beca2074",
+        "name": "Get Orgs URL",
+        "func": "var baseUrl = \"https://api.meraki.com/api/v1\";\n// Construct the URL\nmsg.url = baseUrl + \"/organizations\"\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 140,
+        "wires": [
+            [
+                "5dda4fe7e6533dd4"
+            ]
+        ]
+    },
+    {
+        "id": "9559c09bccdc451d",
+        "type": "http request",
+        "z": "e46559f9beca2074",
+        "name": "Auth Token Header",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "bearer",
+        "senderr": false,
+        "headers": [],
+        "x": 890,
+        "y": 280,
+        "wires": [
+            [
+                "2cb2d3491bf88821"
+            ]
+        ]
+    },
+    {
+        "id": "406194f47fb7685b",
+        "type": "function",
+        "z": "e46559f9beca2074",
+        "name": "Get Networks URL",
+        "func": "var baseUrl = \"https://api.meraki.com/api/v1\";\n// Construct the URL\nmsg.url = baseUrl + \"/organizations/\" + msg.organizationId + \"/networks\"\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 280,
+        "wires": [
+            [
+                "9559c09bccdc451d"
+            ]
+        ]
+    },
+    {
+        "id": "025d771606049832",
+        "type": "http request",
+        "z": "e46559f9beca2074",
+        "name": "Auth Token Header",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "bearer",
+        "senderr": false,
+        "headers": [],
+        "x": 890,
+        "y": 420,
+        "wires": [
+            [
+                "cd7bacd17de13ed5",
+                "3a70782cc1d01e65"
+            ]
+        ]
+    },
+    {
+        "id": "a37eb5685e8c4766",
+        "type": "function",
+        "z": "e46559f9beca2074",
+        "name": "Get Network Devices URL",
+        "func": "var baseUrl = \"https://api.meraki.com/api/v1\";\n// Construct the URL\nmsg.url = baseUrl + \"/organizations/\" + msg.organizationId + \"/devices/availabilities?networkIds[]=\" + msg.networkId\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 420,
+        "wires": [
+            [
+                "025d771606049832"
+            ]
+        ]
+    },
+    {
+        "id": "478efea20d1135ee",
+        "type": "function",
+        "z": "e46559f9beca2074",
+        "name": "Create Unique URL",
+        "func": "var baseUrl = \"https://api.meraki.com/api/v1/networks/\";\n// Ensure networkId is an array\nvar networkId = msg.networkId;\n// Construct the URL\nmsg.url = baseUrl + networkId + \"/clients\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 1260,
+        "wires": [
+            [
+                "bfb521470f8a277f"
+            ]
+        ]
+    },
+    {
+        "id": "bfb521470f8a277f",
+        "type": "http request",
+        "z": "e46559f9beca2074",
+        "name": "Auth Token Header",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "bearer",
+        "senderr": false,
+        "headers": [],
+        "x": 870,
+        "y": 1260,
+        "wires": [
+            [
+                "c301b63468b21eb8"
+            ]
+        ]
+    },
+    {
+        "id": "e7cdca35.a59d78",
+        "type": "ui_group",
+        "name": "Scope",
+        "tab": "fdfd6e3d.21289",
+        "order": 1,
+        "disp": true,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "ad8073f6.ffc03",
+        "type": "ui_group",
+        "name": "Device Loss & Latency",
+        "tab": "fdfd6e3d.21289",
+        "order": 5,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "b5eade29.6c84b",
+        "type": "ui_group",
+        "name": "Device Statuses",
+        "tab": "fdfd6e3d.21289",
+        "order": 2,
+        "disp": true,
+        "width": "12",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "5cb3682.7730398",
+        "type": "ui_group",
+        "name": "Network Wireless Latency",
+        "tab": "fdfd6e3d.21289",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "5111d90b.1f96a8",
+        "type": "ui_group",
+        "name": "Network Clients",
+        "tab": "fdfd6e3d.21289",
+        "order": 6,
+        "disp": true,
+        "width": "12",
+        "collapse": true
+    },
+    {
+        "id": "2ebca0e0df902d3b",
+        "type": "ui_group",
+        "name": "Wireless Connection Summary",
+        "tab": "fdfd6e3d.21289",
+        "order": 8,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "fdfd6e3d.21289",
+        "type": "ui_tab",
+        "name": "Demo Dashboard",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
