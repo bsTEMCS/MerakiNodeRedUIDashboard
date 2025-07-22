@@ -4,7 +4,7 @@ Cisco Meraki Node-RED Dashboard: Guide
 
 **Overview**
 
-This Node-RED flow provides a example dashboard for monitoring Cisco Meraki organizations, networks, devices, and clients. It allows users to:
+This Node-RED flow provides a example dashboard for monitoring Cisco Meraki organizations, networks, devices, and clients using . It allows users to:
 
 - **Select and view organizations** and networks from their Meraki environment.
 - **Monitor Meraki device statuses**, including detailed views for MX devices.
@@ -14,6 +14,8 @@ This Node-RED flow provides a example dashboard for monitoring Cisco Meraki orga
 - **Interact with the dashboard** to refresh data and select particular devices/networks.
 
 The flow integrates with the Cisco Meraki Dashboard API to fetch organization, network, device, and client data, presenting it with rich UI elements (dropdowns, tables, charts) suitable for network monitoring and troubleshooting.
+
+Each flow contians a "Create Unique URL" Node that is used to specify the API Endpoint you want to call based on the OpenAPI Spec Endpoints noted here https://developer.cisco.com/meraki/api-v1/overview/. The purpose of this is for you to have the ability to adjust the endpoints you call as the Meraki API changes and evolves in the future and you are not limited to a potetnialy out of date pre-defined set of calls.
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -28,7 +30,7 @@ Before using this flow, ensure you have:
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Required Node-RED Palettes
+**Required Node-RED Palettes**
 
 Install the following Node-RED palettes before importing this flow:
 
