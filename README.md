@@ -49,7 +49,7 @@ cd ~/.node-red
 
 npm install node-red-dashboard
 
-Or use the Manage Palette option in Node-RED’s menu.
+**Or use the Manage Palette option in Node-RED’s menu.**
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
