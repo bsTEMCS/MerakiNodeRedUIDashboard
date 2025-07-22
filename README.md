@@ -92,7 +92,7 @@ Network clients table
 
 **Notes & Troubleshooting**
 
-**API Limits:** The Meraki Dashboard API has rate limits; avoid rapid repeated refreshes.
+**API Limits:** The Meraki Dashboard API has rate limits (10 Calls per second per Org ID); avoid rapid repeated refreshes.
 
 **Authentication:** If API requests fail, double-check that your API key is correct and has sufficient permissions.
 
@@ -100,28 +100,15 @@ Network clients table
 
 **Security:** Never commit your API key to public repositories.
 
-Example Screenshots
-
-(Add screenshots of the dashboard UI sections if available)
-
-Support
-
-For issues or suggestions, please open an issue in this repository or consult the Node-RED documentation and Meraki API documentation.
-
-
-
 Constants:
-
 
 This flow is designed for Cisco Meraki environments.
 Requires the Node-RED Dashboard palette.
 API key must be kept secure.
 
-
 Edge Cases
 
 If your Meraki organization has no networks/devices, the dropdowns may appear empty.
 The dashboard assumes devices return the expected JSON structure; custom networks may need flow adjustments.
-
 
 Feel free to fork and adapt for your environment!
