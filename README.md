@@ -2,62 +2,60 @@
 
 Cisco Meraki Node-RED Dashboard: Guide
 
-Overview
+**Overview**
 
 This Node-RED flow provides a dashboard for monitoring Cisco Meraki organizations, networks, devices, and clients. It allows users to:
 
-
-Select and view organizations and networks from their Meraki environment.
-Monitor Meraki device statuses, including detailed views for MX devices.
-Display network device statuses and wireless latency in real-time using tables and gauges.
-Visualize wireless connection summaries with bar charts.
-List connected network clients with statuses and MAC addresses.
-Interact with the dashboard to refresh data and select particular devices/networks.
+- Select and view organizations and networks from their Meraki environment.
+- Monitor Meraki device statuses, including detailed views for MX devices.
+- Display network device statuses and wireless latency in real-time using tables and gauges.
+- Visualize wireless connection summaries with bar charts.
+- List connected network clients with statuses and MAC addresses.
+- Interact with the dashboard to refresh data and select particular devices/networks.
 
 The flow integrates with the Cisco Meraki Dashboard API to fetch organization, network, device, and client data, presenting it with rich UI elements (dropdowns, tables, charts) suitable for network monitoring and troubleshooting.
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-Prerequisites
+**Prerequisites**
 
 Before using this flow, ensure you have:
 
 
-A Cisco Meraki account with API access enabled.
-A Meraki API key with appropriate read permissions.
-Node-RED installed (see Node-RED documentation).
+1. **A Cisco Meraki account** with API access enabled.
+2. **A Meraki API key** with appropriate read permissions.
+3. **Node-RED installed** (see Node-RED documentation).
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Required Node-RED Palettes
 
 Install the following Node-RED palettes before importing this flow:
 
-
-node-red-dashboard
-
+[node-red-dashboard
+](https://flows.nodered.org/node/node-red-dashboard)
 For UI elements (charts, tables, dropdowns, gauges).
-node-red-node-ui-table
- (optional, if you want advanced tables)
+
+[node-red-node-ui-table
+](https://flows.nodered.org/node/node-red-node-ui-table) (optional, if you want advanced tables)
 
 To install, run:
 
-
 bash
-Copy Code
 cd ~/.node-red
 npm install node-red-dashboard
 
 Or use the Manage Palette option in Node-RED’s menu.
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+**Importing and Using the Flow**
 
-Importing and Using the Flow
-
-1. Import the JSON File
+1. Import the Example.json JSON File
 
 Open the Node-RED editor (usually at http://localhost:1880/).
 Click the menu (top right) → Import.
-Paste the contents of the flows (1).json file, or upload it directly.
+Paste the contents of the Example.json file, or upload it directly.
 Click Import to add it to your workspace.
 
 2. Deploy the Flow
@@ -83,29 +81,28 @@ Network clients table
 
 5. Using the Dashboard
 
-Select an Organization: Use the dropdown to pick your Meraki organization.
-Select a Network: Networks will populate based on your organization selection.
-View Device Statuses: Device tables and charts update automatically.
-Monitor Wireless Latency: See live wireless latency metrics.
-Review Clients: Check connected clients and their statuses.
-Refresh Data: Use provided buttons to refresh client lists or other data as needed.
+**Select an Organization:** Use the dropdown to pick your Meraki organization.
+**Select a Network:** Networks will populate based on your organization selection.
+**View Device Statuses:** Device tables and charts update automatically.
+**Monitor Wireless Latency:** See live wireless latency metrics.
+**Review Clients:** Check connected clients and their statuses.
+**Refresh Data:** Use provided buttons to refresh client lists or other data as needed.
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Notes & Troubleshooting
+**Notes & Troubleshooting**
 
-API Limits: The Meraki Dashboard API has rate limits; avoid rapid repeated refreshes.
-Authentication: If API requests fail, double-check that your API key is correct and has sufficient permissions.
-Customization: You can adjust polling intervals, UI layout, or add custom logic as needed.
-Security: Never commit your API key to public repositories.
+**API Limits:** The Meraki Dashboard API has rate limits; avoid rapid repeated refreshes.
 
+**Authentication:** If API requests fail, double-check that your API key is correct and has sufficient permissions.
+
+**Customization:** You can adjust polling intervals, UI layout, or add custom logic as needed.
+
+**Security:** Never commit your API key to public repositories.
 
 Example Screenshots
 
-
 (Add screenshots of the dashboard UI sections if available)
-
-
-
 
 Support
 
@@ -128,7 +125,3 @@ The dashboard assumes devices return the expected JSON structure; custom network
 
 
 Feel free to fork and adapt for your environment!
-
-
-
-End of Guide
